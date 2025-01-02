@@ -2,6 +2,8 @@
 
 ## Vertex data
 - OpenGL connection 
+
+        initializeOpenGLFunctions();
 - Compiling shader code
 - Assemble VBO data
 
@@ -16,9 +18,14 @@
             //glBufferData requires a pointer to the first element of the float array
             glBufferData(GL_ARRAY_BUFFER, N*sizeof(vec3), vertices.data(), GL_STATIC_DRAW);
 
-
-
 ## Vertex Shader
+
+
+        in per vertex local info: pos v_color uv normal..
+
+        uniform 
+
+        out 
 ## Tessellation Control
 ## Geometry Shader
 ## Rasterization
