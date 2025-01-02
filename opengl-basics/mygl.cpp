@@ -174,7 +174,7 @@ void MyGL::initializeAndBufferGeometryData() {
     std::vector<GLuint> idx;
 
     //create vertes position
-    int polygonSize = 20;
+    int polygonSize = 36;
     pos.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
     float radius = 0.5f;
     float perRadians = 2*M_PI/polygonSize;
@@ -190,15 +190,14 @@ void MyGL::initializeAndBufferGeometryData() {
     //array vertex index to triangles
     for(int i =1; i< polygonSize; i++){
         idx.push_back(0);
+        idx.push_back(i);
         idx.push_back(i+1);
-        idx.push_back(i+2);
     }
 
     //add the last triangle
     idx.push_back(0);
     idx.push_back(polygonSize);
     idx.push_back(1);
-
 
 
 
@@ -228,6 +227,7 @@ void MyGL::initializeAndBufferGeometryData() {
     // Don't forget to use the GL_ARRAY_BUFFER flag for bufferPosition,
     // but use GL_ELEMENT_ARRAY_BUFFER for bufferIndex since it represents
     // triangle indices rather than mesh vertices.
+
 
 
 }
@@ -283,11 +283,8 @@ void MyGL::drawGeometry() {
 
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferIndex);
-
     glDrawElements(GL_TRIANGLES, indexBufferLength, GL_UNSIGNED_INT, 0);
-
     glDisableVertexAttribArray(shaderAttribVariableHandles["vs_Pos"]);
-
 
 
     // TODO: Use the functions listed below to
@@ -298,13 +295,11 @@ void MyGL::drawGeometry() {
     // - glBindBuffer
     // - glEnableVertexAttribArray
     // - glVertexAttribPointer
-
     // TODO: Use the functions listed below to
     // draw your mesh using the triangle indices stored
     // in bufferIndex.
     // - glBindBuffer
     // - glDrawElements
-
     // TODO: Use glDisableVertexAttribArray
     // after drawing your geometry to "lock"
     // the GPU-side variable named vs_Pos.
